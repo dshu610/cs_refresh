@@ -1,0 +1,7 @@
+# Dshu/ChatBundle/Resources/config/validation.yml
+Dshu\ChatBundle\Document\Chat:
+  properties:
+    user:
+      - NotBlank: ~
+  chatid:
+      - NotBlank: ~

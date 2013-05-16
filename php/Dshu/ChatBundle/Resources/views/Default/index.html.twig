@@ -1,0 +1,11 @@
+
+{# src/Dshu/ChatBundle/Resources/views/Default/index.html.twig #}
+{% extends 'DshuChatBundle::layout.html.twig' %}
+
+{% block content %}
+		<form action="{{ path('chat_main') }}" method="post" {{ form_enctype(form) }}>
+	    	{{ form_widget(form) }}
+	
+	    	<input type="submit" />
+		</form>
+{% endblock %}

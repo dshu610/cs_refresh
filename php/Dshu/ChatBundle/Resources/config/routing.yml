@@ -1,0 +1,12 @@
+chat_index:
+    pattern:  /
+    defaults: { _controller: DshuChatBundle:Default:index }
+chat_send:
+    pattern: /send
+    defaults: { _controller: DshuChatBundle:Default:send }
+chat_main:
+    pattern: /main
+    defaults: { _controller: DshuChatBundle:Default:chat }
+chat_getchat:
+    pattern: /getchat
+    defaults: { _controller: DshuChatBundle:Default:get }

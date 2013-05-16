@@ -1,0 +1,15 @@
+{# src/Dshu/ChatBundle/Resources/views/layout.html.twig #}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+	<title>{% block title %}ChatBox{% endblock %}</title>
+	{%  stylesheets 'bundles/dshuchat/css/*' filter='cssrewrite' %}
+		<link rel="stylesheet" type="text/css" href={{ asset_url }}>
+	{% endstylesheets %}
+	{% block js_script %}{% endblock %}
+	
+	</head>
+	<body>
+		<div id="content">{% block content %}{% endblock %}</div>
+	</body>
+<html>

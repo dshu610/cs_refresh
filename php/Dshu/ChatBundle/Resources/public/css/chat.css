@@ -1,0 +1,24 @@
+#messages{
+	border: solid 3px darkgray;
+	padding: 5px;
+	background-color:black;
+	color: lime;
+	overflow-y: scroll;
+	height: 400px;
+}
+.spanUser{
+	color:#ff00ff;
+}
+.spanTime{
+	color:#00ffff;
+}
+#form_message{
+	border: 0px;
+	width: 100%;
+	outline-width: 0px;
+}
+#send{
+	border: solid 2px orange;
+	padding: 3px;
+	margin-top: 3px;
+}

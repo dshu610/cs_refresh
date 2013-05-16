@@ -1,0 +1,11 @@
+# src/Dshu/ChatBundle/Resources/config/doctrine/Chat.mongodb.yml
+Dshu\ChatBundle\Document\Chat:
+    fields:
+        id:
+            id:  true
+        user:
+            type: string
+        chatid:
+            type: string
+        message:
+            type: string

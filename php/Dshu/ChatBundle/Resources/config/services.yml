@@ -1,0 +1,8 @@
+parameters:
+    chat_service.class: Dshu\ChatBundle\Service\ChatService
+    
+services:
+    chat_service:
+        class: "%chat_service.class%"
+        calls:
+            - [setMongo, ["@doctrine_mongodb"]]
