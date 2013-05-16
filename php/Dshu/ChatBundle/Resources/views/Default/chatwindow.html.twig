@@ -1,0 +1,8 @@
+
+{# src/Dshu/ChatBundle/Resources/views/Default/index.html.twig #}
+{% extends 'DshuChatBundle::layout.html.twig' %}
+{% block title %}{{ chatid }}{% endblock %}
+{% block content %}
+	{% include 'DshuChatBundle::chat.html.twig' with {'messages': messages, 'form': form} %}
+	
+{% endblock %}

@@ -34,7 +34,7 @@ class DefaultController extends Controller
     	$chats = $cs->getMessage($c->getChatid(),"00000000",20);
     	
     	
-    	return $this->render('DshuChatBundle:Default:chat.html.twig', 
+    	return $this->render('DshuChatBundle:Default:chatwindow.html.twig', 
     				array('form' => $form->createView(),
     						'messages' => $chats,
     						'chatid' => $c->getChatid(),

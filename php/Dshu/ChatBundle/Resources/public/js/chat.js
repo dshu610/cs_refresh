@@ -1,15 +1,5 @@
-
-{# src/Dshu/ChatBundle/Resources/views/Default/index.html.twig #}
-{% extends 'DshuChatBundle::layout.html.twig' %}
-{% block title %}{{ chatid }}{% endblock %}
-{% block js_script %}
-<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-var curTime;
-var updater;
-
 function sendData(){
-	$.post("{{ path('chat_send') }}", {
+	$.post(window.sendURL, {
 		chatid : $("#form_chatid").val(),
 		user : $("#form_user").val(),
 		message : $("#form_message").val()},function(){
@@ -23,7 +13,7 @@ function extractTime(tstr){
 	return timestamp.getHours() + ":" + timestamp.getMinutes();
 }
 function updateChat(){
-	$.post("{{ path('chat_getchat') }}", {
+	$.post(window.getURL, {
 		chatid : $("#form_chatid").val(),
 		time : curTime},function(data){
 				var obj = data['messages'];
@@ -40,7 +30,6 @@ function updateChat(){
 		},"json");
 }
 $(document).ready(function(){
-	curTime = "{{ curTime }}";
 	updater = setInterval(updateChat,5000);
 	// prevent enter button from submitting form
 	$("#sendForm").bind('keypress', function(e) {
@@ -51,21 +40,3 @@ $(document).ready(function(){
 	    
 	});
 });
-</script>
-{% endblock %}
-{% block content %}
-	<div id="messages">
-	{% for msg in messages %}
-		<div id="msg"><span class="spanUser">{{ msg.user }}</span><span class="spanTime"> [<script>document.write(extractTime("{{ msg.id }}"));</script>]</span> : {{ msg.message }}</div>
-	{% endfor %}
-	</div>
-	<div id="send">
-		<form id="sendForm" action="#" method="post" {{ form_enctype(form) }}>
-	    	{{ form_row(form.user) }}
-	    	{{ form_row(form.chatid) }}
-			{{ form_widget(form.message) }}
-	
-	    	{# <button id="sendBtn">Send</button> #}
-		</form>
-	</div>
-{% endblock %}

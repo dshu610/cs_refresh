@@ -5,10 +5,9 @@ namespace Dshu\ChatBundle\Service;
 use Dshu\ChatBundle\Document\Chat;
 
 class ChatService{
-	protected $chatId;
 	protected $mongo;
-
-	public function setMongo($m){
+	
+	public function __construct($m){
 		$this->mongo = $m;
 	}
 	

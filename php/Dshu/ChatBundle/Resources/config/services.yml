@@ -3,6 +3,5 @@ parameters:
     
 services:
     chat_service:
-        class: "%chat_service.class%"
-        calls:
-            - [setMongo, ["@doctrine_mongodb"]]
+        class:      "%chat_service.class%"
+        arguments:  ["@doctrine_mongodb"]

@@ -1,0 +1,24 @@
+
+{# src/Dshu/ChatBundle/Resources/views/chat.html.twig #}
+{% block chat_window %}
+	<script type="text/javascript">
+	var sendURL = "{{ path('chat_send') }}";
+	var getURL = "{{ path('chat_getchat') }}";
+	var curTime = "{{ curTime }}";
+	var updater;
+	</script>
+	<div id="chat_window">
+	<div id="messages">
+	{% for msg in messages %}
+		<div id="msg"><span class="spanUser">{{ msg.user }}</span><span class="spanTime"> [<script>document.write(extractTime("{{ msg.id }}"));</script>]</span> : {{ msg.message }}</div>
+	{% endfor %}
+	</div>
+	<div id="send">
+		<form id="sendForm" action="#" method="post" {{ form_enctype(form) }}>
+	    	{{ form_row(form.user) }}
+	    	{{ form_row(form.chatid) }}
+			{{ form_widget(form.message) }}
+		</form>
+	</div>
+	</div>
+{% endblock %}

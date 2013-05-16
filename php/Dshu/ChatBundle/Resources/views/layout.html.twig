@@ -6,6 +6,10 @@
 	{%  stylesheets 'bundles/dshuchat/css/*' filter='cssrewrite' %}
 		<link rel="stylesheet" type="text/css" href={{ asset_url }}>
 	{% endstylesheets %}
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+	{% javascripts '@DshuChatBundle/Resources/public/js/*' %}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
 	{% block js_script %}{% endblock %}
 	
 	</head>
