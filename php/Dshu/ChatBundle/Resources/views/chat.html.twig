@@ -6,14 +6,29 @@
 	var getURL = "{{ path('chat_getchat') }}";
 	var curTime = "{{ curTime }}";
 	var updater;
+	$(document).ready(function(){
+		updater = setInterval(function(){updateChat($("#form_chatid").val());},5000);
+		// prevent enter button from submitting form
+		$("#sendForm").bind('keypress', function(e) {
+			if(e.keyCode == 13){
+				e.preventDefault();
+				sendData($("#form_chatid").val(),
+						$("#form_user").val(),
+						$("#form_message").val(),
+						"form_message"
+				);
+			}
+		    
+		});
+	});
 	</script>
 	<div id="chat_window">
-	<div id="messages">
+	<div class="chat_messages">
 	{% for msg in messages %}
-		<div id="msg"><span class="spanUser">{{ msg.user }}</span><span class="spanTime"> [<script>document.write(extractTime("{{ msg.id }}"));</script>]</span> : {{ msg.message }}</div>
+		<div class="chat_msg"><span class="chat_spanUser">{{ msg.user }}</span><span class="chat_spanTime"> [<script>document.write(extractTime("{{ msg.id }}"));</script>]</span> : {{ msg.message }}</div>
 	{% endfor %}
 	</div>
-	<div id="send">
+	<div class="chat_send">
 		<form id="sendForm" action="#" method="post" {{ form_enctype(form) }}>
 	    	{{ form_row(form.user) }}
 	    	{{ form_row(form.chatid) }}
