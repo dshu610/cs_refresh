@@ -33,7 +33,6 @@ class DefaultController extends Controller
     	$cs = $this->get('chat_service');
     	$chats = $cs->getMessage($c->getChatid(),"00000000",20);
     	
-    	
     	return $this->render('DshuChatBundle:Default:chatwindow.html.twig', 
     				array('form' => $form->createView(),
     						'messages' => $chats,
@@ -49,7 +48,7 @@ class DefaultController extends Controller
     	$c->setMessage($request->request->get('message'));
     	$cs = $this->get('chat_service');
     	$cs->sendMessage($c);
-    	return new Response('Hello world');
+    	return new Response('sucess');
     }
     
     public function getAction(Request $request){
@@ -70,4 +69,6 @@ class DefaultController extends Controller
     	return $response;
     	
     }
+    
+   
 }

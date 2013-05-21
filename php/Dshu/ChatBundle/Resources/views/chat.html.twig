@@ -7,6 +7,7 @@
 	var curTime = "{{ curTime }}";
 	var updater;
 	$(document).ready(function(){
+		$(".chat_messages").animate({scrollTop: $(".chat_messages").height()});
 		updater = setInterval(function(){updateChat($("#form_chatid").val());},5000);
 		// prevent enter button from submitting form
 		$("#sendForm").bind('keypress', function(e) {

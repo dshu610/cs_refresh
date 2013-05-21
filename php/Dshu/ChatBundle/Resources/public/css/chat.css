@@ -22,3 +22,6 @@
 	padding: 3px;
 	margin-top: 3px;
 }
+.chat_err{
+	color: red;
+}

@@ -1,17 +1,32 @@
-function sendData(chatid,user,message,txtInput){
-	$.post(window.sendURL, {
-		chatid : chatid,
-		user : user,
-		message : message},function(){
-			$("#" + txtInput).val('');
-			updateChat(chatid,$(".chat_messages"));
-		});
+function showError(errmsg){
+	var err = $( "<div class=\"chat_err\">ERROR: " + errmsg + "</div>");
+	$(".chat_messages").append(err);
+	$(".chat_messages").animate({scrollTop: $(".chat_messages").height()});
+	
 }
-
 function extractTime(tstr){
 	timestamp = new Date(parseInt(tstr.substring(0,8), 16)*1000);
 	return timestamp.getHours() + ":" + timestamp.getMinutes();
 }
+function sendData(chatid,user,message,txtInput){
+	$.ajax({
+		type: 	"POST",
+		url: 	window.sendURL, 
+		data: 	{
+					chatid : chatid,
+					user : user,
+					message : message
+				},
+		success: function(){
+					updateChat(chatid,$(".chat_messages"));
+				},
+		error:	function(){
+					showError("the message \"" + message + "\" couldn't be sent, please try again");
+				}
+	});
+	$("#" + txtInput).val('');
+}
+
 function updateChat(chatid){
 	$.post(window.getURL, {
 		chatid : chatid,
